@@ -1,0 +1,8 @@
+//User
+export const SET_USER = 'SET_USER';
+export const SET_AUTHENTICATED = 'SET_AUTHENTICATED';
+export const SET_UNAUTHENTICATED = 'SET_UNAUTHENTICATED';
+
+//Ui
+export const LOADING_UI = 'LOADING_UI';
+export const CLEAR_LOADING_UI = 'CLEAR_LOADING_UI';
