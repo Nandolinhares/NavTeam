@@ -5,4 +5,9 @@ export const SET_UNAUTHENTICATED = 'SET_UNAUTHENTICATED';
 
 //Ui
 export const LOADING_UI = 'LOADING_UI';
+export const POSITIVE_MESSAGES = 'POSITIVE_MESSAGES';
 export const CLEAR_LOADING_UI = 'CLEAR_LOADING_UI';
+export const SET_ERRORS = 'SET_ERRORS';
+
+//Navers
+export const SET_NAVERS = 'SET_NAVERS';

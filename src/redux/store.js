@@ -5,6 +5,7 @@ import rootSaga from './sagas/rootSaga';
 //Reducers
 import userReducer from './reducers/userReducer';
 import uiReducer from './reducers/uiReducer';
+import naversReducer from './reducers/naversReducer';
 
 //Middleware
 const sagaMiddleware = createSagaMiddleware();
@@ -14,6 +15,7 @@ const initialState = {};
 const reducers = combineReducers({
     user: userReducer,
     ui: uiReducer,
+    navers: naversReducer
 });
 
 const composeEnhancers =
