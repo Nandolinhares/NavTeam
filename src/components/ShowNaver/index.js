@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 //Styles
-import { Wrapper, WrapModalInfo, NaverImage, Title, InformationTitle, InformationDescription } from './styles';
+import { Wrapper, WrapModalInfo, NaverImage, Title, InformationTitle, InformationDescription, WrapButtons } from './styles';
 import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -14,9 +14,25 @@ import CloseIcon from '@material-ui/icons/Close';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 
-export default function ShowNaver({ open, handleClose, activeNaver, loading }) {
+//Components
+import DeleteNaver from '../DeleteNaver';
+
+export default function ShowNaver({ open, setOpen, handleClose, activeNaver, loading }) {
 
     const classes = useStyles();
+
+    //State do modal
+    const [openDelete, setOpenDelete] = useState(false);
+
+    //Abrir modal Deletar
+    const openDeleteModal = () => {
+        setOpenDelete(true);
+    }
+
+    //Fechar modal
+    const handleCloseDelete = () => {
+        setOpenDelete(false);
+    }
 
     return (
         <Wrapper>
@@ -57,25 +73,23 @@ export default function ShowNaver({ open, handleClose, activeNaver, loading }) {
                                 <InformationTitle>Projetos que participou</InformationTitle>
                                 <InformationDescription>{activeNaver.project}</InformationDescription>
  
-                                <Tooltip title="Deletar">
-                                    <IconButton aria-label="delete" >
-                                        <DeleteIcon fontSize="small" />
-                                    </IconButton>
-                                </Tooltip>
-                                <Tooltip title="Editar">
-                                    <IconButton aria-label="edit" >
-                                        <EditIcon fontSize="small" />
-                                    </IconButton>
-                                </Tooltip>         
+                                <WrapButtons>
+                                    <Tooltip title="Deletar">
+                                        <IconButton aria-label="delete" onClick={openDeleteModal} >
+                                            <DeleteIcon fontSize="small" />
+                                        </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title="Editar">
+                                        <IconButton aria-label="edit" >
+                                            <EditIcon fontSize="small" />
+                                        </IconButton>
+                                    </Tooltip>
+                                </WrapButtons>      
                             </Grid>
                         </Grid>
                         
-                        {/* <DialogContent>
-                            <DialogContentText id="alert-dialog-description">
-                                Let Google help apps determine location. This means sending anonymous location data to
-                                Google, even when no apps are running.
-                            </DialogContentText>
-                        </DialogContent> */}
+                        {/* Modal do delete se o openDelete for sim */}
+                        <DeleteNaver setOpen={setOpen} openDelete={openDelete} setOpenDelete={setOpenDelete} handleCloseDelete={handleCloseDelete} activeNaver={activeNaver} />
                     </>
                 )}
             </Dialog>

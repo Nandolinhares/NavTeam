@@ -8,6 +8,8 @@ export const LOADING_UI = 'LOADING_UI';
 export const POSITIVE_MESSAGES = 'POSITIVE_MESSAGES';
 export const CLEAR_LOADING_UI = 'CLEAR_LOADING_UI';
 export const SET_ERRORS = 'SET_ERRORS';
+export const NAVER_DELETED = 'NAVER_DELETED';
+export const CLEAR_NAVER_DELETED = 'CLEAR_NAVER_DELETED';
 
 //Navers
 export const SET_NAVERS = 'SET_NAVERS';

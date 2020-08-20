@@ -12,3 +12,8 @@ export const createNaver = (naver) => {
 export const showNaver = (naverId) => {
     return { type: 'SHOW_NAVER_SAGA', payload: naverId }
 }
+
+//deleteNaver
+export const deleteNaver = (naverId) => {
+    return { type: 'DELETE_NAVER_SAGA', payload: naverId }
+}

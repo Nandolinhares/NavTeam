@@ -13,6 +13,7 @@ import { getNavers, showNaver } from '../../redux/actions/naversActions';
 //Components
 import Navers from '../Navers';
 import ShowNaver from '../ShowNaver';
+import ModalMessage from '../DeleteNaver/ModalMessage';
 
 export default function Connected() {
 
@@ -24,12 +25,13 @@ export default function Connected() {
 
     //Redux info
     const { navers, activeNaver } = useSelector(state => state.navers);
+    const { deletedMessage } = useSelector(state => state.ui);
     const { loading } = useSelector(state => state.ui);
 
     //Pega os navers cadastrados
     useEffect(() => {
         dispatch(getNavers());
-    }, [dispatch])
+    }, [dispatch, deletedMessage])
 
     //Show Naver information
     const showNaverInfo = (naver) => {
@@ -46,7 +48,7 @@ export default function Connected() {
         <Wrapper>
             <WrapNavSection>
                 <Title>Navers</Title>
-                <Button variant="contained" className={classes.buttonAdd} component={Link} to="/cadastrar" >Adicionar Naver</Button>
+                <Button variant="contained" className={classes.buttonAdd} component={Link} to="/cadastrar">Adicionar Naver</Button>
             </WrapNavSection>
             {/* Navers */}
             <WrapperNavers key={Math.random() * 100000}>
@@ -60,8 +62,10 @@ export default function Connected() {
             </WrapperNavers>
 
             {/* Modal que vai abrir se o open estiver true */}
-            <ShowNaver open={open} handleClose={handleClose} activeNaver={activeNaver} loading={loading} />
-            
+            <ShowNaver open={open} setOpen={setOpen} handleClose={handleClose} activeNaver={activeNaver} loading={loading} />
+
+            {/* Modal message shown */}
+            {deletedMessage !== "" && <ModalMessage />}
         </Wrapper>
     )
 }

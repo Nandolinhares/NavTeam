@@ -2,13 +2,16 @@ import {
     LOADING_UI,
     POSITIVE_MESSAGES,
     CLEAR_LOADING_UI,
-    SET_ERRORS
+    SET_ERRORS,
+    NAVER_DELETED,
+    CLEAR_NAVER_DELETED
 } from '../types';
 
 const initialState = {
     loading: false,
     message: "",
-    errors: {}
+    errors: {},
+    deletedMessage: ""
 }
 
 export default function(state = initialState, action) {
@@ -28,11 +31,21 @@ export default function(state = initialState, action) {
                 ...state,
                 message: action.payload
             }
-            case SET_ERRORS:
-                return {
-                    ...state,
-                    errors: action.payload
-                }        
+        case SET_ERRORS:
+            return {
+                ...state,
+                errors: action.payload
+            }
+        case NAVER_DELETED:
+            return {
+                ...state,
+                deletedMessage: action.payload
+            }
+        case CLEAR_NAVER_DELETED:
+            return {
+                ...state,
+                deletedMessage: ""
+            }               
         default:
             return state;
     }

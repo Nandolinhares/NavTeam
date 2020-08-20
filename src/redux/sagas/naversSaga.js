@@ -67,3 +67,26 @@ function* showNaverSaga(action) {
 export function* watchShowNaver() {
     yield takeLatest('SHOW_NAVER_SAGA', showNaverSaga)
 }
+
+//Worker deleteNaver
+function* deleteNaverSaga(action) {
+    try {
+        yield put({ type: 'LOADING_UI' });
+        const res = yield call(axios.delete, `${backendUrl}/navers/${action.payload}`);
+        const message = "Deletado com sucesso";
+        yield put({ type: 'POSITIVE_MESSAGES', payload: message });
+        yield put({ type: "NAVER_DELETED", payload: message });
+        yield put({ type: 'CLEAR_LOADING_UI' });
+    }
+    catch(err) {
+        const errors = err.response.data;
+        console.error(errors);
+        yield put({ type: 'SET_ERRORS', payload: errors })
+        yield put({ type: 'CLEAR_LOADING_UI' });
+    }
+}
+
+//Watcher deleteNaver
+export function* watchDeleteNaver() {
+    yield takeLatest('DELETE_NAVER_SAGA', deleteNaverSaga)
+}

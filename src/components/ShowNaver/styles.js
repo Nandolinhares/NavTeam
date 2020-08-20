@@ -32,3 +32,7 @@ export const InformationDescription = styled.p`
     font-family: 'Montserrat', sans-serif;
     margin-top: 0;
 `;
+
+export const WrapButtons = styled.section`
+    margin-left: 8px;
+`;

@@ -4,7 +4,7 @@ export const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 600px;
+    max-width: 600px !important;
     margin: 0 auto;
 `;
 
