@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 //Styles
 import { Wrapper, WrapModalInfo, NaverImage, Title, InformationTitle, InformationDescription, WrapButtons } from './styles';
 import { makeStyles } from '@material-ui/core/styles';
@@ -80,7 +81,7 @@ export default function ShowNaver({ open, setOpen, handleClose, activeNaver, loa
                                         </IconButton>
                                     </Tooltip>
                                     <Tooltip title="Editar">
-                                        <IconButton aria-label="edit" >
+                                        <IconButton aria-label="edit" component={Link} to={`/edit/${activeNaver.id}`} >
                                             <EditIcon fontSize="small" />
                                         </IconButton>
                                     </Tooltip>

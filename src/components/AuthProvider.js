@@ -10,7 +10,6 @@ const AuthProvider = ({ children }) => {
   const token = localStorage.AuthToken;
   useEffect(() => {
     if(token) {
-      console.log(token)
       const decodedToken = jwtDecode(token);
       if (decodedToken.exp * 1000 < Date.now()) {
         dispatch(logoutUser());

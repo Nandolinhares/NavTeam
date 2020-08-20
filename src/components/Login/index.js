@@ -16,7 +16,7 @@ export default function Login() {
 
     const classes = useStyles();
     const dispatch = useDispatch();
-    const { loading } = useSelector(state => state.ui);
+    const { loading, errors } = useSelector(state => state.ui);
 
     //Controlled components
     const [values, setValues] = useState({
@@ -64,6 +64,8 @@ export default function Login() {
                     variant="outlined"
                     size="small"
                     className={classes.input}
+                    error={errors.message ? true : false}
+                    helperText={errors.message}
                     fullWidth
                 />
                 <Label>Senha</Label>
@@ -77,6 +79,8 @@ export default function Login() {
                     variant="outlined"
                     size="small"
                     className={classes.input}
+                    error={errors.message ? true : false}
+                    helperText={errors.message}
                     fullWidth
                 />
 

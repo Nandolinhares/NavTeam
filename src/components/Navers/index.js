@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+//Styles
 import { NaversSection, NaverImage, NaverName, NaverJobRole, IconsSection } from './styles';
 import { makeStyles } from '@material-ui/core/styles';
 //Icons
@@ -40,7 +42,7 @@ export default function Navers({ naver, showNaverInfo }) {
                     </IconButton> 
                 </Tooltip>
                 <Tooltip title="Editar">
-                    <IconButton aria-label="edit">
+                    <IconButton aria-label="edit" component={Link} to={`/edit/${naver.id}`}>
                         <EditIcon />
                     </IconButton>
                 </Tooltip>

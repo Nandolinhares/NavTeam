@@ -14,7 +14,6 @@ function* getNaversSaga() {
         yield put({ type: 'CLEAR_LOADING_UI' });
     }
     catch(err) {
-        console.error(err);
         yield put({ type: 'CLEAR_LOADING_UI' });
     }
 }
@@ -35,7 +34,6 @@ function* createNaverSaga(action) {
     }
     catch(err) {
         const errors = err.response.data;
-        console.error(errors);
         yield put({ type: 'SET_ERRORS', payload: errors })
         yield put({ type: 'CLEAR_LOADING_UI' });
     }
@@ -50,6 +48,8 @@ export function* watchCreateNaver() {
 function* showNaverSaga(action) {
     try {
         yield put({ type: 'LOADING_UI' });
+        const token = localStorage.AuthToken;
+        axios.defaults.headers.common["Authorization"] = token;
         const res = yield call(axios.get, `${backendUrl}/navers/${action.payload}`);
         let naver = res.data;
         yield put({ type: 'SET_ACTIVE_NAVER', payload: naver });
@@ -57,7 +57,6 @@ function* showNaverSaga(action) {
     }
     catch(err) {
         const errors = err.response.data;
-        console.error(errors);
         yield put({ type: 'SET_ERRORS', payload: errors })
         yield put({ type: 'CLEAR_LOADING_UI' });
     }
@@ -80,7 +79,6 @@ function* deleteNaverSaga(action) {
     }
     catch(err) {
         const errors = err.response.data;
-        console.error(errors);
         yield put({ type: 'SET_ERRORS', payload: errors })
         yield put({ type: 'CLEAR_LOADING_UI' });
     }
@@ -89,4 +87,25 @@ function* deleteNaverSaga(action) {
 //Watcher deleteNaver
 export function* watchDeleteNaver() {
     yield takeLatest('DELETE_NAVER_SAGA', deleteNaverSaga)
+}
+
+//Worker updateNaver
+function* updateNaverSaga(action) {
+    try {
+        yield put({ type: 'LOADING_UI' });
+        const res = yield call(axios.put, `${backendUrl}/navers/${action.naverId}`, action.payload);
+        const message = "Naver atualizado com sucesso!"
+        yield put({ type: 'POSITIVE_MESSAGES', payload: message });
+        yield put({ type: 'CLEAR_LOADING_UI' });
+    }
+    catch(err) {
+        const errors = err.response.data;
+        yield put({ type: 'SET_ERRORS', payload: errors })
+        yield put({ type: 'CLEAR_LOADING_UI' });
+    }
+}
+
+//Watcher updateNaver
+export function* watchUpdateNaver() {
+    yield takeLatest('UPDATE_NAVER_SAGA', updateNaverSaga)
 }

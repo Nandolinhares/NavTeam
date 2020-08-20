@@ -24,7 +24,9 @@ function* loginSaga(action) {
         window.location.reload(false);
     }
     catch(err) {
-        console.error(err);
+        const errors = err.response.data;
+        yield put({ type: 'SET_ERRORS', payload: errors })
+        yield put({ type: 'CLEAR_LOADING_UI' });
     }
 }
 

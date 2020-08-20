@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 //Pages
 import Home from './pages/Home';
 import AddNaver from './pages/AddNaver';
+import EditNaver from './pages/EditNaver';
 
 //Components
 import Navbar from './components/Navbar';
@@ -30,6 +31,11 @@ function App() {
               exact
               path="/cadastrar"
               component={AddNaver}
+            />
+            <Route 
+              exact
+              path="/edit/:id"
+              component={EditNaver}
             />
           </Switch>
         </Router>

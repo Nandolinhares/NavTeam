@@ -4,7 +4,8 @@ import {
     CLEAR_LOADING_UI,
     SET_ERRORS,
     NAVER_DELETED,
-    CLEAR_NAVER_DELETED
+    CLEAR_NAVER_DELETED,
+    CLEAR_ERRORS
 } from '../types';
 
 const initialState = {
@@ -45,7 +46,12 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 deletedMessage: ""
-            }               
+            }
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                errors: {}
+            }                   
         default:
             return state;
     }

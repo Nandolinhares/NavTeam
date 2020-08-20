@@ -17,3 +17,8 @@ export const showNaver = (naverId) => {
 export const deleteNaver = (naverId) => {
     return { type: 'DELETE_NAVER_SAGA', payload: naverId }
 }
+
+//updateNaver
+export const updateNaver = (naver, naverId) => {
+    return { type: 'UPDATE_NAVER_SAGA', payload: naver, naverId: naverId }
+}
