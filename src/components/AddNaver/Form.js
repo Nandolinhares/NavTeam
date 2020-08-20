@@ -74,7 +74,7 @@ export default function Form({ naverInfo, handleChange, setOpen }) {
                 <div className={classes.fields}>
                     <Label>Idade</Label>
                     <TextField 
-                        label="Idade"
+                        placeholder="09/08/1968"
                         type="text"
                         id="outlined-size-small"
                         name="birthdate"
@@ -95,7 +95,7 @@ export default function Form({ naverInfo, handleChange, setOpen }) {
                 <div className={classes.fields}>
                     <Label>Tempo de Empresa</Label>
                     <TextField 
-                        label="Tempo"
+                        placeholder="22/08/2020"
                         type="text"
                         id="outlined-size-small"
                         name="admission_date"

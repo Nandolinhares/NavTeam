@@ -45,3 +45,25 @@ function* createNaverSaga(action) {
 export function* watchCreateNaver() {
     yield takeLatest('CREATE_NAVER_SAGA', createNaverSaga)
 }
+
+//Worker showNaver
+function* showNaverSaga(action) {
+    try {
+        yield put({ type: 'LOADING_UI' });
+        const res = yield call(axios.get, `${backendUrl}/navers/${action.payload}`);
+        let naver = res.data;
+        yield put({ type: 'SET_ACTIVE_NAVER', payload: naver });
+        yield put({ type: 'CLEAR_LOADING_UI' });
+    }
+    catch(err) {
+        const errors = err.response.data;
+        console.error(errors);
+        yield put({ type: 'SET_ERRORS', payload: errors })
+        yield put({ type: 'CLEAR_LOADING_UI' });
+    }
+}
+
+//Watcher showNaver
+export function* watchShowNaver() {
+    yield takeLatest('SHOW_NAVER_SAGA', showNaverSaga)
+}

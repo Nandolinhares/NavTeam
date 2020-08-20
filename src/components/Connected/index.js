@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 //Styles
 import { Wrapper, Title, WrapNavSection, WrapperNavers } from './styles';
@@ -8,21 +8,39 @@ import Button from '@material-ui/core/Button';
 //Redux
 import { useSelector, useDispatch } from 'react-redux';
 //Actions
-import { getNavers } from '../../redux/actions/naversActions';
+import { getNavers, showNaver } from '../../redux/actions/naversActions';
 
 //Components
 import Navers from '../Navers';
+import ShowNaver from '../ShowNaver';
 
 export default function Connected() {
 
     const dispatch = useDispatch();
     const classes = useStyles();
-    const { navers } = useSelector(state => state.navers);
+
+    //State modal
+    const [open, setOpen] = useState(false);
+
+    //Redux info
+    const { navers, activeNaver } = useSelector(state => state.navers);
+    const { loading } = useSelector(state => state.ui);
 
     //Pega os navers cadastrados
     useEffect(() => {
         dispatch(getNavers());
     }, [dispatch])
+
+    //Show Naver information
+    const showNaverInfo = (naver) => {
+        dispatch(showNaver(naver.id));
+        setOpen(true);
+    }
+
+    const handleClose = () => {
+        setOpen(false);
+        dispatch({ type: 'CLEAR_ACTIVE_NAVER' });
+    }
 
     return (
         <Wrapper>
@@ -35,11 +53,14 @@ export default function Connected() {
                 {navers.map(naver => {
                     return (
                         <div key={Math.random() * 10000}>
-                            <Navers naver={naver} />
+                            <Navers naver={naver} showNaverInfo={showNaverInfo} />
                         </div>
                     )
                 })}
             </WrapperNavers>
+
+            {/* Modal que vai abrir se o open estiver true */}
+            <ShowNaver open={open} handleClose={handleClose} activeNaver={activeNaver} loading={loading} />
             
         </Wrapper>
     )

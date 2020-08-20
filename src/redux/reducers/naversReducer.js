@@ -1,9 +1,11 @@
 import {
-    SET_NAVERS
+    SET_NAVERS,
+    SET_ACTIVE_NAVER, CLEAR_ACTIVE_NAVER
 } from '../types';
 
 const initialState = {
-    navers: []
+    navers: [],
+    activeNaver: {}
 }
 
 export default function(state = initialState, action) {
@@ -13,6 +15,16 @@ export default function(state = initialState, action) {
                 ...state,
                 navers: action.payload
             }
+        case SET_ACTIVE_NAVER:
+            return {
+                ...state,
+                activeNaver: action.payload
+            }
+        case CLEAR_ACTIVE_NAVER:
+            return {
+                ...state,
+                activeNaver: {}
+            }        
         default:
             return state;
     }

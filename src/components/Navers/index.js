@@ -7,20 +7,20 @@ import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 
-export default function Navers({ naver }) {
+export default function Navers({ naver, showNaverInfo }) {
 
     const classes = useStyles();
 
     return (
        <NaversSection>
-            <NaverImage src={naver.url} alt={naver.name} />
+            <NaverImage src={naver.url} alt={naver.name} onClick={() => showNaverInfo(naver)} />
             <NaverName>{naver.name}</NaverName>
             <NaverJobRole>{naver.job_role}</NaverJobRole>
             <IconsSection>
                 <Tooltip title="Deletar">
                     <IconButton aria-label="delete" className={classes.deleteButton}>
                         <DeleteIcon />
-                    </IconButton>
+                    </IconButton> 
                 </Tooltip>
                 <Tooltip title="Editar">
                     <IconButton aria-label="edit">

@@ -11,3 +11,5 @@ export const SET_ERRORS = 'SET_ERRORS';
 
 //Navers
 export const SET_NAVERS = 'SET_NAVERS';
+export const SET_ACTIVE_NAVER = 'SET_ACTIVE_NAVER';
+export const CLEAR_ACTIVE_NAVER = 'CLEAR_ACTIVE_NAVER';

@@ -7,3 +7,8 @@ export const getNavers = () => {
 export const createNaver = (naver) => {
     return { type: 'CREATE_NAVER_SAGA', payload: naver }
 }
+
+//showNaver
+export const showNaver = (naverId) => {
+    return { type: 'SHOW_NAVER_SAGA', payload: naverId }
+}

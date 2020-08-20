@@ -12,6 +12,7 @@ export const NaverImage = styled.img`
     @media (max-width: 314px) {
         width: 100%;
     }
+    cursor: pointer;
 `;
 
 export const NaverName = styled.h2`

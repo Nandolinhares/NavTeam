@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 //Styles
-import { Wrapper, WrapperTitle, Title } from './styles';
+import { Wrapper, WrapperTitle, Title, WrapModalInfo } from './styles';
 //Material UI
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -71,7 +71,7 @@ export default function AddNaver() {
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <section style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <WrapModalInfo>
                     <DialogTitle id="alert-dialog-title">Naver Criado</DialogTitle>
                     <DialogActions>
                         <Tooltip title="Fechar">
@@ -80,11 +80,11 @@ export default function AddNaver() {
                             </IconButton>
                         </Tooltip>
                     </DialogActions>
-                </section>
+                </WrapModalInfo>
                 <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                    {message}
-                </DialogContentText>
+                    <DialogContentText id="alert-dialog-description">
+                        {message}
+                    </DialogContentText>
                 </DialogContent>
             </Dialog>
                 
