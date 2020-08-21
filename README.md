@@ -1,10 +1,13 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![logologoNave](https://user-images.githubusercontent.com/15971419/90840485-78a16580-e330-11ea-9944-4c81ec3089eb.png)
 
-## Available Scripts
+## Acesso
 
-In the project directory, you can run:
+O projeto pode ser acessado online na seguinte url: https://naveteam-a0a31.web.app/
 
-### `yarn start`
+Ou acesse localmente: 
+### git clone https://github.com/Nandolinhares/NavTeam.git
+### cd navteam
+### yarn start
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
