@@ -5,6 +5,9 @@ vagas@nave.rs
 
 O projeto pode ser acessado online na seguinte url: https://naveteam-a0a31.web.app/
 
+Email: fernandolinhares1920@globo.com
+Senha: 12345678
+
 Ou acesse localmente: 
 ### git clone https://github.com/Nandolinhares/NavTeam.git
 ### cd navteam
