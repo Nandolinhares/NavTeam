@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
         dispatch({ type: 'SET_AUTHENTICATED' });
         axios.defaults.headers.common["Authorization"] = token;
       }
-    }
+    } 
   }, [dispatch, token]);
   return <>{children}</>;
 };

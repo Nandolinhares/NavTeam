@@ -6,7 +6,7 @@ import { NavbarSection, LogoNave } from './styles';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 //Redux
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 //Actions
 import { logoutUser } from '../../redux/actions/authenticationActions';
 
@@ -17,6 +17,7 @@ export default function Navbar() {
 
     const dispatch = useDispatch();
     const classes = useStyles();
+    const { authenticated } = useSelector(state => state.user);
 
     //Função Logout onClick
     const logout = () => {
@@ -28,7 +29,7 @@ export default function Navbar() {
             <Button component={Link} to="/">
                 <LogoNave src={Logo} alt="Logo" />
             </Button>
-            <Button onClick={logout} className={classes.buttonLogout}>Sair</Button>
+            {authenticated && <Button onClick={logout} className={classes.buttonLogout}>Sair</Button>}
         </NavbarSection>
     )
 }
